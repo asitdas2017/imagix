@@ -7,15 +7,13 @@ import { FirebaseUploadService } from '../../services/firebase.upload.service';
   styleUrls: ['./upload.component.css'],
   providers: [FirebaseUploadService]
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent {
   constructor(private _firebaseUploadService: FirebaseUploadService) {}
 
   selectedImage: any;
-  
-  onPhotoSubmit(event: any){
+  onPhotoSubmit(event: any) {
     const selectedImage: File = event.target.files[0];
     this._firebaseUploadService.uploadPhoto(selectedImage);
-    getImageUrl();
   }
 
 
