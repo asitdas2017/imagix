@@ -9,7 +9,7 @@ export class ParentComponent implements OnInit {
 
   constructor() { }
 
-  ast: string = 'Hello World';
+  ast: string = 'Hello New World';
 
   test:string;
   ngOnInit() {

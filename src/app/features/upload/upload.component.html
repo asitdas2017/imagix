@@ -1,25 +1,13 @@
-
 <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Image title">
-    </mat-form-field>
-    
-    <input type="file" (change)="onPhotoSubmit($event)"> 
-  
-    <mat-form-field>
-        <input matInput placeholder="Input">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-select placeholder="Select image category">
-        <mat-option value="option">Option 1</mat-option>
-        <mat-option value="option">Option 2</mat-option>
-        <mat-option value="option">Option 3</mat-option>
-        <mat-option value="option">Option 4</mat-option>
-        <mat-option value="option">Option 1</mat-option>
-        <mat-option value="option">Option 2</mat-option>
-        <mat-option value="option">Option 3</mat-option>
-        <mat-option value="option">Option 4</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+  <input type="file" (change)="onPhotoSubmit($event)">
+</div>
+<br>
+<br>URL:
+<br>
+<br>
+<div class="example-container" style="border:1px solid #d4d4d4; padding: 20px;">
+    <label>Upload Image</label>
+    <input type="file" name="uploadImage" id="uploadImage" (change)="onUploadImage()">
+</div>
+
+<app-imagedetails *ngIf="displayDetailsComponent" [downloadedURL]="imageURL"></app-imagedetails>
