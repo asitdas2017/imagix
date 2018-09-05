@@ -1,0 +1,23 @@
+<p>
+  photostream works!
+</p>
+<section class="center-content">
+    <p>Just select your images to create a circle slider. It is just a decorative slider to rich your presentation. It is available as a shortcode and a Visual Composer module. You can use it creatively like the way in this page.</p>
+
+    <table class="tbl-list">
+        <thead>
+            <tr>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Company</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let image of images">                
+                <td>{{image.imageName}}</td>
+                <td>{{image.imageLocation}}</td>
+                <td>{{image.imageStorageName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

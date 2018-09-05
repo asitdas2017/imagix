@@ -12,7 +12,7 @@ export class UploadComponent implements OnInit {
 
   private displayDetailsComponent: boolean;
   private basePath: string;
-  private imageURL: string;
+  private sendUploadedInfo: any;
 
   constructor(private _firebaseUploadService: FirebaseUploadService) {
     this.basePath = 'imageuploads';
@@ -31,9 +31,14 @@ export class UploadComponent implements OnInit {
     const iRef = storageRef.child(imageRef);
     iRef.put(selectedFile).then((snapshot) => {
       snapshot.ref.getDownloadURL().then((downloadURL) => {
-        console.log(downloadURL);
+        console.log(snapshot);
         this.displayDetailsComponent = true;
-        this.imageURL = downloadURL;
+        this.sendUploadedInfo = {
+          downloadURL: downloadURL,
+          storageSize: snapshot.metadata.size,
+          storagePath: snapshot.metadata.fullPath,
+          storageName: snapshot.metadata.name
+        };
       });
     });
   }

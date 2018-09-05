@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 
@@ -7,10 +7,13 @@ import { Router } from '@angular/router';
 export class FirebaseUploadService {
 
     private basePath: string;
+    private allImages: AngularFireList<any[]>;
     constructor( private _db: AngularFireDatabase, private _router: Router ) {
         this.basePath = 'uploads';
+        this.allImages = this._db.list('/uploaded') as AngularFireList<any[]>;
     }
 
+    /*
     uploadPhoto(imageDetailsObject: any) {
         const storageRef: firebase.storage.Reference = firebase.storage().ref();
         const _db = this._db;
@@ -30,23 +33,13 @@ export class FirebaseUploadService {
             });
         }
     }
+    */
 
+    addPhoto(data) {
+        return this._db.list('/uploaded').push(data);
+    }
 
-
-    uploadPhoto1() {
-        const storageRef: firebase.storage.Reference = firebase.storage().ref();
-        const randomNumber = Math.floor(Date.now() / 1000);
-        const selectedFile = (<HTMLInputElement>document.getElementById('uploadImage')).files[0];
-        const fileExt = `${selectedFile.name}`.substring(`${selectedFile.name}`.lastIndexOf('.') + 1);
-        const imageRef = `/${this.basePath}/${randomNumber}.${fileExt}`;
-        const iRef = storageRef.child(imageRef);
-        iRef.put(selectedFile).then((snapshot) => {
-
-            // this.details = 'snapshot';
-            // return snapshot.metadata.fullPath;
-             // console.log(filename);
-        });
-
-        
+    getAllImages() {
+        return this.allImages;
     }
 }

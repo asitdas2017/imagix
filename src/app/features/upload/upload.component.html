@@ -1,13 +1,7 @@
-<div class="example-container">
-  <input type="file" (change)="onPhotoSubmit($event)">
-</div>
-<br>
-<br>URL:
-<br>
-<br>
 <div class="example-container" style="border:1px solid #d4d4d4; padding: 20px;">
     <label>Upload Image</label>
-    <input type="file" name="uploadImage" id="uploadImage" (change)="onUploadImage()">
+    <input type="file" name="uploadImage" id="uploadImage">
+    <button type="button" class="btn btn-lg btn-primary" (click)="onUploadImage()">Upload</button>
 </div>
 
-<app-imagedetails *ngIf="displayDetailsComponent" [downloadedURL]="imageURL"></app-imagedetails>
+<app-imagedetails *ngIf="displayDetailsComponent" [receiveUploadedInfo]="sendUploadedInfo"></app-imagedetails>

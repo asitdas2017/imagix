@@ -13,7 +13,7 @@ export class ImagedetailsComponent implements OnInit {
 
   constructor( private _firebaseUploadService: FirebaseUploadService, private _router: Router) { }
 
-  @Input() downloadedURL: any;
+  @Input() receiveUploadedInfo: any;
   private imageName: string;
   private imageLocation: string;
   private imageComment: string;
@@ -23,16 +23,20 @@ export class ImagedetailsComponent implements OnInit {
   }
 
   onPhotoSubmit() {
-    console.log('asit');
     const imageDetails = {
       imageName: this.imageName,
       imageLocation: this.imageLocation,
       imageComment: this.imageComment,
-      // imageURL: this.imageURL
+      imageDownloadURL: this.receiveUploadedInfo.downloadURL,
+      imageStorageBytes: this.receiveUploadedInfo.storageSize,
+      imageStoragePath: this.receiveUploadedInfo.storagePath,
+      imageStorageName: this.receiveUploadedInfo.storageName
     };
     console.log(imageDetails);
     // this._router.navigate(['about']);
 
-    // this._firebaseUploadService.uploadPhoto(imageDetails);
+    this._firebaseUploadService.addPhoto(imageDetails).then(() => {
+      this._router.navigate(['photostream']);
+    });
   }
 }

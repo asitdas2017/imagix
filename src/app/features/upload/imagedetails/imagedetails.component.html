@@ -6,10 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Large Modal</h4>
             </div>
-            <div class="modal-body">              
+            <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-8">
-                      <div style="background:#f4f4f4;"><img src="{{downloadedURL}}" alt="" style="width: 100%"></div>
+                      <div style="background:#f4f4f4;"><img src="{{receiveUploadedInfo.downloadURL}}" alt="" style="width: 100%"></div>
                     </div>
                     <div class="col-lg-4">
                       <form class="form-signin" (submit)="onPhotoSubmit()" #varImageForm novalidate>
