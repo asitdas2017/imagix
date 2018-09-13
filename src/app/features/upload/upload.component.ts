@@ -13,6 +13,7 @@ export class UploadComponent implements OnInit {
   private displayDetailsComponent: boolean;
   private basePath: string;
   private sendUploadedInfo: any;
+  private progressPercentage: any;
 
   constructor(private _firebaseUploadService: FirebaseUploadService) {
     this.basePath = 'imageuploads';
@@ -28,8 +29,24 @@ export class UploadComponent implements OnInit {
     const selectedFile = (<HTMLInputElement>document.getElementById('uploadImage')).files[0];
     const fileExt = `${selectedFile.name}`.substring(`${selectedFile.name}`.lastIndexOf('.') + 1);
     const imageRef = `/${this.basePath}/${randomNumber}.${fileExt}`;
-    const iRef = storageRef.child(imageRef);
-    iRef.put(selectedFile).then((snapshot) => {
+    const iRef = storageRef.child(imageRef).put(selectedFile);
+
+    iRef.on('state_changed', (snapshot) => {
+        // upload in progress
+        this.progressPercentage = Math.round((iRef.snapshot.bytesTransferred / iRef.snapshot.totalBytes) * 100);
+        console.log('Upload is ' + this.progressPercentage + '% done');
+      }, (error) => {
+        // upload failed
+        console.log(error);
+      }, () => {
+        // upload success
+        console.log('Success');
+      }
+    );
+    iRef.then((snapshot) => {
+      console.log('COmpleted');
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
       snapshot.ref.getDownloadURL().then((downloadURL) => {
         console.log(snapshot);
         this.displayDetailsComponent = true;
@@ -42,4 +59,9 @@ export class UploadComponent implements OnInit {
       });
     });
   }
+
+
+
+
+  
 }

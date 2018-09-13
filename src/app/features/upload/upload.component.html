@@ -1,6 +1,21 @@
 <div class="example-container" style="border:1px solid #d4d4d4; padding: 20px;">
-    <label>Upload Image</label>
-    <input type="file" name="uploadImage" id="uploadImage">
+    <label>Upload Image {{progressPercentage}}</label>
+
+<br>
+<div class="fileinput fileinput-new" data-provides="fileinput">
+    <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+    <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+</div>
+
+    <input type="file" name="uploadImage" id="uploadImage" class="btn btn-primary">
+    <br>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [style.width.%]="progressPercentage">
+          <span class="sr-only">30% Complete</span>
+        </div>
+      </div>
+      <br>
+      <br>
     <button type="button" class="btn btn-lg btn-primary" (click)="onUploadImage()">Upload</button>
 </div>
 
