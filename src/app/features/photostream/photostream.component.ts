@@ -1,5 +1,7 @@
+import { Imagesinterface } from './../../interfaces/Imagesinterface';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseUploadService } from '../../services/firebase.upload.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-photostream',
@@ -9,12 +11,18 @@ import { FirebaseUploadService } from '../../services/firebase.upload.service';
 })
 export class PhotostreamComponent implements OnInit {
 
-  images: any[];
+  private loadingSpinner: Boolean = true;
+  imagesTrack:  any[];
+  images: any[] = [];
   constructor(private _firebaseUploadService: FirebaseUploadService) { }
 
   ngOnInit() {
-    this._firebaseUploadService.getAllImages().valueChanges().subscribe(data => {
-      this.images = data;
+    this._firebaseUploadService.getAllImages().snapshotChanges().subscribe(data => {
+      this.loadingSpinner = false;
+      data.map(subscribedData => {
+        const newPair = {...subscribedData.payload.val(), key: subscribedData.payload.key};
+        this.images.push(newPair);
+      });
     });
   }
 
