@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ export class FirebaseUploadService {
 
     private basePath: string;
     private allImages: AngularFireList<any[]>;
+    private particularImage: AngularFireObject<any>;
     constructor( private _db: AngularFireDatabase, private _router: Router ) {
         this.basePath = 'uploads';
         this.allImages = this._db.list('/uploaded') as AngularFireList<any[]>;
@@ -41,5 +42,9 @@ export class FirebaseUploadService {
 
     getAllImages() {
         return this.allImages;
+    }
+    getParticularImageDetail(id){
+        this.particularImage = this._db.object('/uploaded/' + id) as AngularFireObject<any[]>;
+        return this.particularImage;
     }
 }

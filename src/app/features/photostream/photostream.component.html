@@ -1,12 +1,13 @@
 <h3>Photostream!</h3>
 <section class="center-content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida convallis sagittis. Aliquam feugiat, massa non facilisis auctor, lacus mauris molestie neque, quis vulputate quam dui euismod sapien. Curabitur ligula ante, maximus a sodales eget, semper eu metus. Integer ligula sem, placerat sit amet lorem nec, tristique varius tellus.</p>
+    <p>{{photostreamDetailsModel}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida convallis sagittis. Aliquam feugiat, massa non facilisis auctor, lacus mauris molestie neque, quis vulputate quam dui euismod sapien. Curabitur ligula ante, maximus a sodales eget, semper eu metus. Integer ligula sem, placerat sit amet lorem nec, tristique varius tellus.</p>
    
     <section class="imageThumbContainer">
         <div class="loadingModel" *ngIf="loadingSpinner">Loading...</div>
         <div *ngFor="let image of images">
-            <span>Image : {{image.key}}</span>
-            <img src="{{image.imageDownloadURL}}" title="{{image.imageName}}" id="" />
+            <a (click)="openModal(image.key)" title="{{image.imageName}}"><img src="{{image.imageDownloadURL}}" alt="{{image.imageName}}" /></a>
         </div>
     </section>
+
+    <app-photostreamdetails *ngIf="photostreamDetailsModel" [receiveIdInfo]="photostreamDetailsItem" (childInfo)="getChildInfo($event)"></app-photostreamdetails>
 </section>

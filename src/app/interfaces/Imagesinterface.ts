@@ -1,6 +1,6 @@
 export interface Imagesinterface {
-    $key: string;
-    imageComment: string;
+    key: any;
+    imageComment: any;
     imageDownloadURL: string;
     imageLocation: string;
     imageName: string;

@@ -1,7 +1,6 @@
 import { Imagesinterface } from './../../interfaces/Imagesinterface';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseUploadService } from '../../services/firebase.upload.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-photostream',
@@ -11,8 +10,10 @@ import { map } from 'rxjs/operators';
 })
 export class PhotostreamComponent implements OnInit {
 
-  private loadingSpinner: Boolean = true;
-  imagesTrack:  any[];
+  loadingSpinner: Boolean = true;
+  photostreamDetailsModel: Boolean = false;
+  photostreamDetailsItem: any;
+  imagesLargeDetails:  any[];
   images: any[] = [];
   constructor(private _firebaseUploadService: FirebaseUploadService) { }
 
@@ -20,10 +21,19 @@ export class PhotostreamComponent implements OnInit {
     this._firebaseUploadService.getAllImages().snapshotChanges().subscribe(data => {
       this.loadingSpinner = false;
       data.map(subscribedData => {
-        const newPair = {...subscribedData.payload.val(), key: subscribedData.payload.key};
+        const newPair = {...subscribedData.payload.val(), 'key': subscribedData.payload.key};
         this.images.push(newPair);
       });
     });
+  }
+
+  openModal(id) {
+    this.photostreamDetailsModel = true;
+    this.photostreamDetailsItem = id;
+  }
+  getChildInfo(event) {
+    console.log(event);
+    this.photostreamDetailsModel = event;
   }
 
 }

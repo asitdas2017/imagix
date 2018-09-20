@@ -7,6 +7,7 @@ import { ContactComponent } from './features/contact/contact.component';
 import { UploadComponent } from './features/upload/upload.component';
 import { ImagedetailsComponent } from './features/upload/imagedetails/imagedetails.component';
 import { PhotostreamComponent } from './features/photostream/photostream.component';
+import { PhotostreamdetailsComponent } from './features/photostream/photodetails/photostreamdetails.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -32,6 +33,7 @@ export const routingAllComponents = [
   ContactComponent,
   PhotostreamComponent,
   UploadComponent,
-  ImagedetailsComponent
+  ImagedetailsComponent,
+  PhotostreamdetailsComponent
 ];
 
