@@ -1,0 +1,63 @@
+.albumPageHeader{
+    background: url(../../../assets/appassets/album03.jpeg) no-repeat 0 70%;
+    height: 350px;
+    background-size: 100% 230%;
+    color: #286090;
+}
+.albumPageHeader h3{
+    margin: 0;
+    padding: 115px 0 0 0;
+    text-align: center;
+    font-size: 42px;
+    color: #286090;
+}
+.albumPageHeader p{
+    margin: 0 auto;
+    width: 1170px;
+}
+.albumCardHolder{
+    width: 100%;
+    position: relative;
+}
+.albumCard{
+    width: 270px;
+    height: 240px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+    background: #f4f4f4;
+    text-align: center;
+    padding: 20px 15px 0 15px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.albumCard:nth-child(4n){
+    margin-right: 0px;
+}
+
+.albumCard .imgThumb img{
+    width: 48px;
+    height: 48px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin: 5px;
+    margin-right: -12px;
+}
+.albumCard .imgThumb span{
+    margin-left: 5px;
+    font-size: 18px;
+    vertical-align: text-bottom;
+}
+
+.albumContainer{
+    padding-top: 30px;
+}
+.albumContainer .breadcrumbs{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.albumContainer .breadcrumbs h3{
+    margin: 0;
+    line-height: 32px;
+}

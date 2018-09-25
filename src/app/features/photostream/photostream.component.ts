@@ -1,4 +1,3 @@
-import { Imagesinterface } from './../../interfaces/Imagesinterface';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseUploadService } from '../../services/firebase.upload.service';
 

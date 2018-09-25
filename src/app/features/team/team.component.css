@@ -1,0 +1,96 @@
+.teamPageHeader{
+    background: url(../../../assets/appassets/team3.jpeg) no-repeat 0 38%;
+    height: 350px;
+    background-size: 100% 290%;
+    color: #fff;
+}
+.teamPageHeader h3{
+    margin: 0;
+    padding: 115px 0 0 0;
+    text-align: center;
+    font-size: 42px;
+    color: #fff;
+}
+.teamPageHeader p{
+    margin: 0 auto;
+    width: 1170px;
+}
+.teamPageHeader form.joinHeader{
+    text-align: center;
+}
+.teamContainer{
+    padding-top: 30px;
+}
+.teamContainer .breadcrumbs{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.teamContainer .breadcrumbs h3{
+    margin: 0;
+    line-height: 32px;
+}
+.filters > a{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #ddd;
+    display: inline-block;
+    line-height: 34px;
+    vertical-align: bottom;
+}
+.filters > a:hover,
+.filters > a.active{
+    color: #999;
+}
+.filters .search{
+    position: relative;
+    color: #999;
+    display: inline-block;
+}
+.filters .search input{
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    height: 34px;
+    padding: 0 15px 0 35px;
+    margin: 0;
+    width: 300px;
+    outline: none;
+    color: #999;
+    font-size: 14px;
+}
+.filters .search .fa{
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    color: #999;
+}
+
+
+
+/* Team cards */
+.teamCard{
+    width: 270px;
+    height: 240px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+    background: #f4f4f4;
+    text-align: center;
+    padding: 20px 15px 0 15px;
+}
+.teamCard:nth-child(4n){
+    margin-right: 0px;
+}
+.teamCard img{
+    width: 120px;
+    height: 120px;
+    border:3px solid #fff;
+    border-radius: 50%;
+}
+.teamCard h4{
+    color: #337ab7;
+}
+.teamCard p{
+    color: #777;
+    font-size: 14px;
+}

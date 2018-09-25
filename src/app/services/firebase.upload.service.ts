@@ -8,10 +8,10 @@ export class FirebaseUploadService {
 
     private basePath: string;
     private allImages: AngularFireList<any[]>;
+    private allAlbumImages: AngularFireList<any[]>;
     private particularImage: AngularFireObject<any>;
     constructor( private _db: AngularFireDatabase, private _router: Router ) {
         this.basePath = 'uploads';
-        this.allImages = this._db.list('/uploaded') as AngularFireList<any[]>;
     }
 
     /*
@@ -41,10 +41,16 @@ export class FirebaseUploadService {
     }
 
     getAllImages() {
+        this.allImages = this._db.list('/uploaded') as AngularFireList<any[]>;
         return this.allImages;
     }
-    getParticularImageDetail(id){
+    getAlbumImages() {
+        // this.allAlbumImages = this._db.list('/uploaded', ref => ref.orderByChild('imageName').equalTo('Asit')) as AngularFireList<any[]>;
+        this.allAlbumImages = this._db.list('/uploaded') as AngularFireList<any[]>;
+        return this.allAlbumImages;
+    }
+    getParticularImageDetail(id) {
         this.particularImage = this._db.object('/uploaded/' + id) as AngularFireObject<any[]>;
         return this.particularImage;
-    }
+    };
 }

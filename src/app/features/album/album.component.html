@@ -1,0 +1,33 @@
+<section class="albumPageHeader">
+    <h3>
+        Album
+    </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida convallis sagittis. Aliquam feugiat,
+        massa non facilisis auctor, lacus mauris molestie neque, quis vulputate quam dui euismod sapien. Curabitur
+        ligula
+        ante, maximus a sodales eget, semper eu metus. Integer ligula sem, placerat sit amet lorem nec, tristique
+        varius
+        tellus</p>
+</section>
+<div class="container albumContainer">
+    <section class="breadcrumbs">
+        <h3>Album <i *ngIf="albumName != null" class="fa fa-chevron-right" aria-hidden="true"></i> {{albumName}}</h3>
+        <a title="" (click)="backToAlbum()"><span class="fa fa-chevron-left" aria-hidden="true"></span> Back to Album</a>
+    </section>
+    <section class="albumCardHolder" *ngIf="onlyDisplaAlbumThumb">
+        <div *ngFor="let list of albumList" class="albumCard" (click)="onClickAlbum(list)">
+            <h3>{{list}}</h3>
+            <div class="imgThumb">
+                <img src="../../../assets/appassets/profile.png" alt="" />
+                <img src="../../../assets/appassets/profile.png" alt="" />
+                <img src="../../../assets/appassets/profile.png" alt="" />
+                <img src="../../../assets/appassets/profile.png" alt="" />
+                <span class="fa fa-plus" aria-hidden="true"></span>
+            </div>
+        </div>
+    </section>
+
+    <section *ngIf="getIntoTheAlbum">
+        <div>images</div>
+    </section>
+</div>
