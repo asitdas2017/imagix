@@ -10,8 +10,7 @@ export class TeamregistrationComponent implements OnInit {
 
   _teamRegistration: FormGroup;
   _post: any;
-  _fName: any;
-  _lName: any;
+  _name: any;
   _email: any;
   _phoneNumber: number;
   _address: any;
@@ -23,21 +22,23 @@ export class TeamregistrationComponent implements OnInit {
 
   ngOnInit() {
     this._teamRegistration = this._formBuilder.group({
-      fName:  [null, [Validators.required, Validators.minLength(2)]],
-      lName:  [null, [Validators.required, Validators.minLength(2)]],
-      email:  [null, [Validators.required]],
-      phone:  [null, [Validators.required]],
-      group:  [null, [Validators.required]],
-      address: this._formBuilder.group({
-          roadAddress:  [null, [Validators.required, Validators.minLength(2)]],
-          zip:          [null, [Validators.required, Validators.minLength(2)]]
+      email:  [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      passwordMatch: this._formBuilder.group({
+          password:  [null, [Validators.required]],
+          confPassword: [null, [Validators.required]]
       }),
-      description:  [null, []]
+      personalInfo: this._formBuilder.group({
+          name:     [null, [Validators.required, Validators.minLength(2)]],
+          phone:    [null, [Validators.required]],
+          country:  [null, [Validators.required]],
+          zip:      [null, [Validators.required, Validators.minLength(2)]]
+      })
     });
   }
 
   formSubmit(data) {
-    console.log(data);
+    // console.log(data);
+    console.log(this._teamRegistration.controls.email);
   }
 
 }

@@ -1,25 +1,32 @@
+<section class="uploadPage">
+    <h3>
+        Upload your image!
+    </h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas gravida convallis sagittis. Aliquam feugiat,
+        massa non facilisis auctor, lacus mauris molestie neque, quis vulputate quam dui euismod sapien. Curabitur
+        ligula
+        ante, maximus a sodales eget, semper eu metus. Integer ligula sem, placerat sit amet lorem nec, tristique
+        varius
+        tellus</p>
+</section>
 <div class="container">
-    <div class="example-container" style="border:1px solid #d4d4d4; padding: 20px;">
-        <label>Upload Image {{progressPercentage}}</label>
-
-        <br>
-        <div class="fileinput fileinput-new" data-provides="fileinput">
-            <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
-            <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
-        </div>
-
-        <input type="file" name="uploadImage" id="uploadImage" class="btn btn-primary">
-        <br>
+    <section class="uploadContainer">
+        <form>
+            <div class="form-group">
+                <label for="uploadImage">Browse File to Upload</label>
+                <input type="file" class="form-control-file" id="uploadImage" name="uploadImage">
+                <button type="button" class="btn btn-primary" (click)="onUploadImage()">Upload</button>
+            </div>
+        </form>
+    </section>
+    <div class="progressContainer" *ngIf="progressBarDisplay">
+        <label>Upload Percentage {{progressPercentage}} %</label>
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
                 [style.width.%]="progressPercentage">
                 <span class="sr-only">30% Complete</span>
             </div>
         </div>
-        <br>
-        <br>
-        <button type="button" class="btn btn-lg btn-primary" (click)="onUploadImage()">Upload</button>
     </div>
-
-    <app-imagedetails *ngIf="displayDetailsComponent" [receiveUploadedInfo]="sendUploadedInfo"></app-imagedetails>
+    <app-imagedetails *ngIf="displayDetailsComponent" [receiveUploadedInfo]="sendUploadedInfo" (closeModalInfo)="getModalInfo($event)"></app-imagedetails>
 </div>

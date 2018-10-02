@@ -1,5 +1,5 @@
 <div id="largeModal" class="modal info-modal in" tabindex="-1" role="dialog" style="display:block">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close">&times;</button>
@@ -9,83 +9,65 @@
 
 
         <!-- ---------------- Registration form start---------------- -->
-        <form role="form" [formGroup]="_teamRegistration" (ngSubmit)="formSubmit(_teamRegistration.value)" novalidate>
-          <div class="row example-container">
-            <div class="col-lg-6 col-md-6">
-              <mat-form-field>
-                <input  matInput 
-                        id="fName"
-                        placeholder="First Name"
-                        formControlName="fName"
-                        >
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6">
-              <mat-form-field>
-                <input  matInput 
-                        id="lName"
-                        placeholder="Last Name"
-                        formControlName="lName"
-                        >
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row example-container">
-            <div class="col-lg-6 col-md-6">
-              <mat-form-field>
-                <input matInput placeholder="Email">
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6">
-              <mat-form-field>
-                <input matInput placeholder="Phone Number">
-              </mat-form-field>
-            </div>
-          </div>
-          <h4>Group Selection:</h4>
-          <div class="row example-container">
-            <div class="col-lg-8 col-md-8">
-              <mat-form-field>
-                <mat-select placeholder="Select Group" formControlName="group">
-                  <mat-option value="option1">Option1</mat-option>
-                  <mat-option value="option2">Option2</mat-option>
-                  <mat-option value="option3">Option3</mat-option>
-                  <mat-option value="option4">Option4</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <h4>Address:</h4>
-          <div class="row example-container" formGroupName="address">
-            <div class="col-lg-8 col-md-8">
-              <mat-form-field>
-                <input  matInput 
-                        placeholder="Road Address"
-                        formControlName="roadAddress"
-                        >
-              </mat-form-field>
-            </div>
-            <div class="col-lg-4 col-md-4">
-              <mat-form-field>
-                  <input  matInput 
-                          placeholder="Zip"
-                          formControlName="zip"
-                          >
-              </mat-form-field>
-            </div>
-          </div>
-
-          <h4>Add Description:</h4>
+        <form class="registrationForm" role="form" [formGroup]="_teamRegistration" (ngSubmit)="formSubmit(_teamRegistration.value)"
+          novalidate>
+          <h4><span class="fa fa-info-circle" aria-hidden="true"></span>Registration Info:</h4>
           <div class="row example-container">
             <div class="col-lg-12 col-md-12">
               <mat-form-field>
-                <textarea matInput 
-                          placeholder="Description"
-                          formControlName="description"
-                          >
-                </textarea>
+                <input matInput type="email" id="email" placeholder="Email" formControlName="email">
+                <mat-hint>{{_teamRegistration.controls.email.valid}}</mat-hint>
+                <mat-error>
+                    Please enter a valid email address
+                </mat-error>
               </mat-form-field>
+            </div>
+          </div>
+          <div class="row example-container" formGroupName="passwordMatch">
+            <div class="col-lg-6 col-md-6">
+              <mat-form-field>
+                <input matInput type="password" id="password" placeholder="Password" formControlName="password">
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <mat-form-field>
+                <input matInput type="password" id="confPassword" compare-to="password" placeholder="Confirm Password" formControlName="confPassword">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <h4 class="marT30"><span class="fa fa-info-circle" aria-hidden="true"></span>Personal Info:</h4>
+          <div formGroupName="personalInfo">
+            <div class="row example-container">
+              <div class="col-lg-12 col-md-12">
+                <mat-form-field>
+                  <input matInput id="name" placeholder="Full Name" formControlName="name">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row example-container">
+              <div class="col-lg-6 col-md-6">
+                <mat-form-field>
+                  <mat-select placeholder="Select Country" formControlName="country">
+                    <mat-option value="option1">Option1</mat-option>
+                    <mat-option value="option2">Option2</mat-option>
+                    <mat-option value="option3">Option3</mat-option>
+                    <mat-option value="option4">Option4</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <mat-form-field>
+                  <input matInput type="number" placeholder="Zip" formControlName="zip">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row example-container">
+              <div class="col-lg-6 col-md-6">
+                <mat-form-field>
+                  <input matInput type="tel" placeholder="Phone Number">
+                </mat-form-field>
+              </div>
             </div>
           </div>
           <!-- <button mat-raised-button color="primary" [disabled]="!_teamRegistration.valid">Submit Application</button> -->

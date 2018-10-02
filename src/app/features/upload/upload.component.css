@@ -1,27 +1,80 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
-
-.btn-file {
+.container{
     position: relative;
-    overflow: hidden;
 }
-.btn-file input[type=file] {
+.uploadPage{
+    background: url(../../../assets/appassets/upload2.jpg) no-repeat 0 22%;
+    height: 300px;
+    background-size: 100%;
+    color: #333;
+}
+.uploadPage h3{
+    margin: 0;
+    padding: 105px 0 0 0;
+    text-align: center;
+    font-size: 42px;
+    color: #333;
+}
+.uploadPage p{
+    margin: 0 auto;
+    width: 1170px;
+}
+.uploadContainer{
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    width: 800px;
+    height: 190px;
+    margin: 30px auto;
+    border: 1px dotted #ddd;
+    padding-top: 70px;
+    box-shadow: 0px 0px 10px #ddd;
+    border-radius: 10px;
+}
+.uploadContainer form{
+    text-align: center;
+    color: #777;
+}
+.uploadContainer form label{
+    color: #333;
+}
+.uploadContainer form input[type=file]{
+    border: 1px solid #e0e0e0;
+    padding: 6px 7px;
+    display: inline-block;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+.uploadContainer form button{
+    padding: 8px 35px;
+}
+
+.progressContainer{
     position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;   
-    cursor: inherit;
-    display: block;
+    top: 200px;
+    left: 280px;
+    z-index: 1;
+    width: 600px;
+    border: 1px solid #ecebeb;
+    padding: 10px;
+    border-radius: 8px;
+    height: 62px;
+    text-align: center;
+    animation: MoveUpDown ease 1s forwards;
+}
+@keyframes MoveUpDown {
+    0% {
+      top: 150px;
+      opacity: 0;
+    }
+    50% {
+      top: 200px;
+      opacity: 1;
+    }
+}
+.progressContainer label{
+    font-size: 12px;
+}
+.progressContainer .progress{
+    height: 12px;
+    margin-bottom: 0;
 }

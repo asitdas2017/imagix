@@ -26,8 +26,11 @@
             </div>
         </div>
     </section>
-
     <section *ngIf="getIntoTheAlbum">
-        <div>images</div>
+        <section class="imageThumbContainer">
+            <div *ngFor="let image of allAnbumImagesFiltered">
+                <a (click)="openModal(image.key)" title="{{image.imageName}}"><img src="{{image.imageDownloadURL}}" alt="{{image.imageName}}" /></a>
+            </div>
+        </section>
     </section>
 </div>

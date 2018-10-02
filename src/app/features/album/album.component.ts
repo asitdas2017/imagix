@@ -15,7 +15,7 @@ export class AlbumComponent implements OnInit {
   private onlyDisplaAlbumThumb: Boolean = true;
   albumList = ['portrait', 'landscape', 'common', 'others'];
   allAlbumImages: any[] = [];
-  allAnbumImagesFintered: any;
+  allAnbumImagesFiltered: any;
   /// Active filter rules
   filters = {};
 
@@ -32,8 +32,8 @@ export class AlbumComponent implements OnInit {
   }
 
   applyFilters() {
-    this.allAnbumImagesFintered = _.filter(this.allAlbumImages, _.conforms(this.filters));
-    console.log(this.allAnbumImagesFintered);
+    this.allAnbumImagesFiltered = _.filter(this.allAlbumImages, _.conforms(this.filters));
+    console.log(this.allAnbumImagesFiltered);
     this.getIntoTheAlbum = true;
     this.onlyDisplaAlbumThumb = false;
   }
@@ -41,24 +41,24 @@ export class AlbumComponent implements OnInit {
     this.albumName = id;
     switch (id) {
       case 'portrait': {
-        this.filters['imageName'] = val => val === 'Asit';
+        this.filters['imageType'] = val => val === 'portrait';
         this.applyFilters();
-         break;
+        break;
       }
       case 'landscape': {
-        this.filters['imageName'] = val => val === 'Chsdafdf';
+        this.filters['imageType'] = val => val === 'landscape';
         this.applyFilters();
-         break;
+        break;
       }
       case 'common': {
-        this.filters['imageName'] = val => val === 'Test';
+        this.filters['imageType'] = val => val === 'common';
         this.applyFilters();
-         break;
+        break;
       }
       case 'others': {
-        this.filters['imageName'] = val => val === 'sdfsdf';
+        this.filters['imageType'] = val => val === 'others';
         this.applyFilters();
-         break;
+        break;
       }
    }
   }

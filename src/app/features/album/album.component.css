@@ -1,5 +1,5 @@
 .albumPageHeader{
-    background: url(../../../assets/appassets/album03.jpeg) no-repeat 0 70%;
+    background: url(../../../assets/appassets/album02.jpg) no-repeat 0 70%;
     height: 350px;
     background-size: 100% 230%;
     color: #286090;
@@ -21,7 +21,7 @@
 }
 .albumCard{
     width: 270px;
-    height: 240px;
+    height: 200px;
     margin-right: 20px;
     margin-bottom: 20px;
     float: left;
@@ -60,4 +60,27 @@
 .albumContainer .breadcrumbs h3{
     margin: 0;
     line-height: 32px;
+}
+
+
+.imageThumbContainer{
+    min-height: 400px;
+    position: relative;
+    margin-top: 25px;
+}
+.imageThumbContainer div{
+    width: 282px;
+    height: 188px;
+    display: inline-block;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    background: url(../../../assets/appassets/loading_spinner.gif) no-repeat 50% 50% #f4f4f4;
+    background-size: 50px 50px;
+}
+.imageThumbContainer div:nth-child(4n){
+    margin-right: 0px;
+}
+.imageThumbContainer div img{
+    width: 100%;
+    height: 100%;
 }

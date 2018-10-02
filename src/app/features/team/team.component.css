@@ -1,12 +1,12 @@
 .teamPageHeader{
-    background: url(../../../assets/appassets/team3.jpeg) no-repeat 0 38%;
-    height: 350px;
-    background-size: 100% 290%;
+    background: url(../../../assets/appassets/team3.jpeg) no-repeat 0 30%;
+    height: 300px;
+    background-size: 100%;
     color: #fff;
 }
 .teamPageHeader h3{
     margin: 0;
-    padding: 115px 0 0 0;
+    padding: 75px 0 0 0;
     text-align: center;
     font-size: 42px;
     color: #fff;
